@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+	<channel>
+		<title>drewkestell.us</title>
+		<link>//www.drewkestell.us/</link>
+		<description>Musings of a Curious Programmer</description>
+		<item>
+		  <title>BloogBot - Part 1</title>
+		  <link>https://drewkestell.us/</link>
+		  <guid>https://drewkestell.us/</guid>
+		  <pubDate>Wed, 4 Jul 2018 17:29:10 GMT</pubDate>
+		  <description>In depth discussion of my journey creating a bot for World of Warcraft - Part 1</description>
+		</item>
+		<item>
+		  <title>BloogBot - Part 2</title>
+		  <link>https://drewkestell.us/part-2.php</link>
+		  <guid>https://drewkestell.us/part-2.php</guid>
+		  <pubDate>Sat, 7 Jul 2018 11:52:10 GMT</pubDate>
+		  <description>In depth discussion of my journey creating a bot for World of Warcraft - Part 2</description>
+		</item>
+		<item>
+		  <title>BloogBot - Part 3</title>
+		  <link>https://drewkestell.us/part-3.php</link>
+		  <guid>https://drewkestell.us/part-3.php</guid>
+		  <pubDate>Sat, 8 Jul 2018 9:22:10 GMT</pubDate>
+		  <description>In depth discussion of my journey creating a bot for World of Warcraft - Part 3</description>
+		</item>
+	</channel>
+</rss>

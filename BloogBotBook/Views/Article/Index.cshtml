@@ -1,0 +1,28 @@
+﻿@using BloogBotBook.Models
+
+@model IEnumerable<Article>
+
+@{
+    ViewData["Title"] = "Article Index";
+}
+
+<a href="~/Article/Create">New Article</a>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Slug</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var article in Model)
+    {
+        <tr>
+            <td>@article.Id</td>
+            <td>@article.Slug</td>
+            <td><a href="@($"/Article/Update/{article.Id}")">Edit</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
