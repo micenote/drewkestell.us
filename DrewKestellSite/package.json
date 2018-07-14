@@ -3,11 +3,11 @@
   "name": "drew-kestell-site",
   "private": true,
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-sass": "^4.0.1",
+    "gulp": "^4.0.0",
     "gulp-clean-css": "^3.9.4",
     "gulp-rename": "^1.3.0",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-sass-lint": "^1.4.0"
+    "gulp-sass": "^4.0.1",
+    "gulp-sass-lint": "^1.4.0",
+    "gulp-sourcemaps": "^2.6.4"
   }
 }
