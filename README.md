@@ -1,4 +1,6 @@
-# bloog-bot-book
+# drewkestell.us
+
+## My personal site, and the home of BloogBot:
 
 An exploration of the following topics...
 
