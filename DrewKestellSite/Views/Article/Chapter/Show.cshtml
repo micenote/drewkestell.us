@@ -1,0 +1,107 @@
+﻿@using DrewKestellSite.ViewModels
+
+@model ArticleChapterViewModel
+
+@{
+    ViewData["Title"] = "Article";
+}
+
+
+<div class="absolute">
+    <div class="left-navigation" id="chapter-navigation">
+        <ul>
+            @foreach (var chapter in Model.ChapterNavigation)
+            {
+                <li><a href="/Article/@Model.ArticleId/Chapter/@chapter.Item1" class="@(chapter.Item3 ? "active" : "")">Chapter @chapter.Item1 - @chapter.Item2</a></li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="content">
+    <h1>@Model.ArticleTitle</h1>
+    <div class="chapter-number">
+        <small><strong>Chapter @Model.ChapterNumber</strong></small>
+    </div>
+    <div>
+        <small>Drew Kestell, 2018</small>
+    </div>
+    <div>
+        <a href="mailto:drew.kestell@gmail.com"><small>drew.kestell@gmail.com</small></a>
+    </div>
+    <hr>
+
+    @Html.Raw(Model.Text)
+    <a href="#top">Back to Top</a>
+    <div class="section-divider">...</div>
+    @await Html.PartialAsync("~/Views/Shared/_RSS.cshtml")
+    <div id="comments" class="m-b-xl">
+        <h4>Comments? Leave me a note:</h4>
+
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="comments-name">
+        </div>
+
+        <label>Comments</label>
+        <textarea id="comments-message"></textarea>
+
+        <div class="comments-status">
+            <span id="comments-error" class="comments-error"></span>
+            <span id="comments-success" class="comments-success"></span>
+        </div>
+
+        <button type="button" id="submit-comments" class="btn btn-submit">Submit</button>
+
+        <div class="comments">
+            @foreach (var comment in Model.Comments)
+            {
+                <div class="comment">
+                    <p>@comment.Message</p>
+                    <span class="comment-poster">Posted by @comment.Name on @comment.DateCreated</span>
+                    @if (!string.IsNullOrWhiteSpace(comment.Response))
+                    {
+                        <div class="reply">
+                            <p>@comment.Response</p>
+                            <span class="comment-reply">Posted by Drew</span>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="/js/run_prettify.js"></script>
+    <script>
+        function submitComments() {
+            var commentsSuccess = document.getElementById('comments-success');
+            commentsSuccess.textContent = '';
+            var commentsError = document.getElementById('comments-error');
+            commentsError.textContent = '';
+            var name = document.getElementById('comments-name').value;
+            var message = document.getElementById('comments-message').value;
+            if (!name) {
+                commentsError.textContent = 'Name is required';
+            } else if (!message) {
+                commentsError.textContent = 'Message is required';
+            } else {
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/Article/' + @Model.ArticleId + '/Comments?name=' + name + '&message=' + message);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == XMLHttpRequest.DONE) {
+                        if (this.status == 200) {
+                            commentsSuccess.textContent = 'Thanks for the message. All comments are moderated, but you should see it here soon.';
+                        } else {
+                            commentsError.textContent = 'There was a problem. Try again later.';
+                        }
+                    }
+                }
+                xhr.send();
+            }
+        }
+
+        document.getElementById('submit-comments').addEventListener('click', submitComments);
+    </script>
+}

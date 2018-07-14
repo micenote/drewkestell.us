@@ -1,0 +1,25 @@
+﻿@using DrewKestellSite.ViewModels
+
+@model IEnumerable<ArticleViewModel>
+
+@{
+    ViewData["Title"] = "Articles";
+}
+
+<div class="article-container content">
+    @foreach (var article in Model)
+    {
+        <a href="/Article/@article.Id/Chapter/1">
+            <div class="article-card">
+                <div class="article-thumbnail">
+                    <img src="@article.ThumbnailUrl" />
+                </div>
+                <hr />
+                <div class="article-body">
+                    <h3>@article.Title</h3>
+                    <p>@article.Description</p>
+                </div>
+            </div>
+        </a>
+    }
+</div>

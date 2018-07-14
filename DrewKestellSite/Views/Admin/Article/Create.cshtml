@@ -1,0 +1,11 @@
+﻿@using DrewKestellSite.ViewModels
+
+@{
+    ViewData["Title"] = "New Article";
+}
+
+<h1 class="m-b-xl">New Article</h1>
+
+<form method="post">
+    @await Html.PartialAsync("~/Views/Admin/Article/_Form.cshtml", new ArticleViewModel())
+</form>

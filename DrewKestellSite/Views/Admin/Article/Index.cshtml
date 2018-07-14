@@ -1,0 +1,32 @@
+﻿@using DrewKestellSite.Models
+
+@model IEnumerable<Article>
+
+@{
+    ViewData["Title"] = "Article Index";
+}
+
+<h1 class="m-b-xl">Articles</h1>
+
+<a class="btn btn-primary m-b-l" href="~/Admin/Article/Create">New Article</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Slug</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var article in Model)
+    {
+        <tr>
+            <td>@article.Id</td>
+            <td>@article.Slug</td>
+            <td><a href="@($"/Admin/Article/Update/{article.Id}")">Edit</a></td>
+            <td><a href="@($"/Admin/Article/Delete/{article.Id}")">Delete</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
