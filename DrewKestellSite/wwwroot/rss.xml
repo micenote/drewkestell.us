@@ -60,5 +60,12 @@
       <pubDate>Sun, 28 Oct 2018 8:00:00 GMT</pubDate>
       <description>In depth discussion of my journey creating a bot for World of Warcraft - Chapter 8</description>
     </item>
+    <item>
+      <title>BloogBot - Chapter 9</title>
+      <link>http://drewkestell.us/Article/5/Chapter/9</link>
+      <guid>http://drewkestell.us/Article/5/Chapter/9</guid>
+      <pubDate>Sat, 3 Nov 2018 6:00:00 GMT</pubDate>
+      <description>In depth discussion of my journey creating a bot for World of Warcraft - Chapter 9</description>
+    </item>
 	</channel>
 </rss>
