@@ -328,3 +328,7 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+DrewKestellSite/wwwroot/css/styles.css
+DrewKestellSite/wwwroot/css/styles.min.css
+DrewKestellSite/appSettings.Development.json
