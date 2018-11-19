@@ -79,7 +79,7 @@ namespace DrewKestellSite.Controllers.Admin
                 article.ArticleChapters.Add(new Models.ArticleChapter
                 {
                     Name = sanitizer.Sanitize(chapter.LinkText),
-                    Text = sanitizer.Sanitize(chapter.Text),
+                    Text = chapter.Text,
                     ChapterNumber = ++index
                 });
             await context.SaveChangesAsync();
