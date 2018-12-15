@@ -11,4 +11,10 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\chapter-19\" />
+    <Folder Include="wwwroot\img\chapter-20\" />
+    <Folder Include="wwwroot\img\chapter-21\" />
+  </ItemGroup>
+
 </Project>
