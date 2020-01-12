@@ -5,23 +5,15 @@ var gulp = require('gulp'),
     compileSass = require('gulp-sass'),
     cleanCSS = require('gulp-clean-css'),
     rename = require('gulp-rename'),
-    sourcemaps = require('gulp-sourcemaps'),
-    sassLint = require('gulp-sass-lint');
+    sourcemaps = require('gulp-sourcemaps');
 
 var webRoot = './wwwroot/';
 
-gulp.task('lint:sass', function () {
-    return gulp.src('./Styles/styles.scss')
-        .pipe(sassLint())
-        .pipe(sassLint.format())
-        .pipe(sassLint.failOnError());
-});
-
-gulp.task('compile:sass', gulp.series('lint:sass', function () {
+gulp.task('compile:sass', function () {
     return gulp.src('./Styles/styles.scss')
         .pipe(compileSass())
         .pipe(gulp.dest(webRoot + 'css'));
-}));
+});
 
 gulp.task('minify:css', gulp.series('compile:sass', function () {
     gulp.src([webRoot + 'css/*.css', '!' + webRoot + 'css/*.min.css'])
