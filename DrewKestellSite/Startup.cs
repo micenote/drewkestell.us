@@ -40,7 +40,7 @@ namespace DrewKestellSite
             services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            var allowedCssClasses = new[] { "text-bold", "quote", "cite", "prettyprint", "img-memory", "img-memory-layout", "img-full", "img-hacked", "clearfix", "img-enough-talk", "ragh", "img-demonstration-1",  };
+            var allowedCssClasses = new[] { "text-bold", "quote", "cite", "prettyprint", "img-memory", "img-memory-layout", "img-full", "img-hacked", "clearfix", "img-enough-talk", "ragh", "img-demonstration-1" };
             var sanitizer = new HtmlSanitizer(allowedCssClasses: allowedCssClasses);
             sanitizer.AllowedAttributes.Add("class");
             services.AddSingleton(typeof(HtmlSanitizer), sanitizer);

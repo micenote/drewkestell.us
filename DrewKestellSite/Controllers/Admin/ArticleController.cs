@@ -6,7 +6,6 @@ using Ganss.XSS;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace DrewKestellSite.Controllers.Admin
@@ -66,8 +65,6 @@ namespace DrewKestellSite.Controllers.Admin
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int articleId, ArticleFormObject formObject)
         {
-
-
             var article = await context.Articles.Include(a => a.ArticleChapters).FirstOrDefaultAsync(a => a.Id == articleId);
             article.Slug = sanitizer.Sanitize(formObject.Slug);
             article.Title = sanitizer.Sanitize(formObject.Title);

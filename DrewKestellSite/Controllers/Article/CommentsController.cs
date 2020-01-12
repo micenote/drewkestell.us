@@ -1,8 +1,12 @@
-﻿using DrewKestellSite.Data;
+﻿using DrewKestellSite.Configuration;
+using DrewKestellSite.Data;
 using DrewKestellSite.FormObjects;
 using DrewKestellSite.Models;
 using Ganss.XSS;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using System;
 using System.Net;
 using System.Threading.Tasks;
@@ -13,11 +17,13 @@ namespace DrewKestellSite.Controllers.Article
     {
         readonly ApplicationContext context;
         readonly HtmlSanitizer sanitizer;
+        readonly ApiConfiguration config;
 
-        public CommentsController(ApplicationContext context, HtmlSanitizer sanitizer)
+        public CommentsController(ApplicationContext context, HtmlSanitizer sanitizer, IOptions<ApiConfiguration> config)
         {
             this.context = context;
             this.sanitizer = sanitizer;
+            this.config = config.Value;
         }
 
         [HttpPost("/Article/{articleId}/Comments")]
@@ -37,6 +43,13 @@ namespace DrewKestellSite.Controllers.Article
                 DateCreated = DateTime.Now
             });
             await context.SaveChangesAsync();
+
+            var client = new SendGridClient(config.SendGridAPIKey);
+            var from = new EmailAddress("admin@drewkestel.us", "Site Admin");
+            var to = new EmailAddress("drew.kestell@gmail.com", "Drew Kestell");
+            var subject = "A new comment at drewkestell.us is pending your approval.";
+            var message = MailHelper.CreateSingleEmail(from, to, subject, formObject.Message, formObject.Message);
+            await client.SendEmailAsync(message);
 
             return Json(HttpStatusCode.OK);
         }

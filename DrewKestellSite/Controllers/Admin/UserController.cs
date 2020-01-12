@@ -1,12 +1,10 @@
 ﻿using DrewKestellSite.Configuration;
 using DrewKestellSite.Data;
 using DrewKestellSite.Models;
+using DrewKestellSite.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Authentication;
 using System.Threading.Tasks;
@@ -46,6 +44,13 @@ namespace DrewKestellSite.Controllers.Admin
             await context.SaveChangesAsync();
 
             return RedirectToAction("Create", "Session");
+        }
+
+        [HttpGet("/Admin/Users/")]
+        public IActionResult List()
+        {
+            var users = context.Users.Select(u => new UserViewModel(u));
+            return View("~/Views/Admin/User/List.cshtml", users);
         }
     }
 }

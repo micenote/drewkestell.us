@@ -148,7 +148,7 @@ li.L9 {
 
 /* end prettify theme */
 
- /* tables */
+/* tables */
 
 table {
   border-collapse: collapse;
@@ -203,6 +203,13 @@ tbody {
   margin-bottom: 1rem;
   background-color: transparent;
 }
+
+/* end tables */
+
+/* my styles */
+
+$light-blue: #94cef5;
+$light-green: #79e0b9;
 
 html {
   font-family: 'Roboto', sans-serif;
@@ -443,7 +450,7 @@ h1 {
 
 .navigation-container {
   height: 60px;
-  background-color: #94cef5;
+  background-color: $light-blue;
   box-shadow: 0px 1px 2px 0px #929292;
 }
 
@@ -479,18 +486,27 @@ h1 {
   font-weight: bold;
   padding: 6px 12px;
   text-decoration: none;
+  transition: background-color .15s;
 
   &:focus {
     outline: 0;
   }
 
   &.btn-primary {
-    background-color: #94cef5;
+    background-color: $light-blue;
+
+    &:hover {
+        background-color: darken($light-blue, 25%);
+    }
   }
 
   &.btn-submit {
     display: block;
-    background-color: #79e0b9;
+    background-color: $light-green;
+
+    &:hover {
+        background-color: darken($light-green, 25%);
+    }
   }
 }
 
@@ -500,6 +516,7 @@ h1 {
   position: relative;
 
   .delete-chapter {
+    cursor: pointer;
     position: absolute;
     right: 10px;
     top: 6px;

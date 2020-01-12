@@ -31,18 +31,18 @@ namespace DrewKestellSite.Controllers.Admin
 
         // this should be HttpDestroy
         [HttpGet("/Admin/Session/Delete")]
-        public async Task<IActionResult> Destroy()
+        public async Task<IActionResult> Delete()
         {
             await SignOutAsync(HttpContext);
             return RedirectToAction("Index", "Home");
         }
 
         [NonAction]
-        public async Task SignInAsync(HttpContext httpContext, int userId) =>
+        async Task SignInAsync(HttpContext httpContext, int userId) =>
             await httpContext.SignInAsync("KestellSiteAuthenticationScheme", BuildClaimsPrincipal(userId));
 
         [NonAction]
-        public async Task SignOutAsync(HttpContext httpContext) =>
+        async Task SignOutAsync(HttpContext httpContext) =>
             await httpContext.SignOutAsync("KestellSiteAuthenticationScheme");
 
         static ClaimsPrincipal BuildClaimsPrincipal(int userId)
