@@ -4,9 +4,9 @@
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="HtmlSanitizer" Version="4.0.185" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="HtmlSanitizer" Version="4.0.217" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.14" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Sendgrid" Version="9.12.0" />
   </ItemGroup>
 </Project>
