@@ -34,6 +34,7 @@ namespace DrewKestellSite
 
             services.AddTransient<IPasswordHasher<User>, PasswordHasher<User>>();
             services.AddTransient<IAuthentication, Authentication>();
+            services.AddTransient<IAnalytics, Analytics>();
 
             services.Configure<Configuration.ApiConfiguration>(configuration);
             services.AddMvc();

@@ -13,6 +13,8 @@ namespace DrewKestellSite.Data
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<SiteVisit> SiteVisits { get; set; }
+
         public ApplicationContext(DbContextOptions options)
             : base(options)
         {
