@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace DrewKestellSite.Models
 {
@@ -11,5 +12,7 @@ namespace DrewKestellSite.Models
 
         [Required, MaxLength(128)]
         public string IPAddress { get; set; }
+
+        public DateTime DateTime { get; set; }
     }
 }
