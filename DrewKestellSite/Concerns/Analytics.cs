@@ -1,6 +1,7 @@
 ﻿using DrewKestellSite.Data;
 using DrewKestellSite.Models;
 using Microsoft.AspNetCore.Http;
+using System;
 using System.Threading.Tasks;
 
 namespace DrewKestellSite.Concerns
@@ -19,7 +20,8 @@ namespace DrewKestellSite.Concerns
             var siteVisit = new SiteVisit
             {
                 Url = httpContext.Request.Path,
-                IPAddress = httpContext.Connection.RemoteIpAddress.ToString()
+                IPAddress = httpContext.Connection.RemoteIpAddress.ToString(),
+                DateTime = DateTime.Now
             };
             context.SiteVisits.Add(siteVisit);
             await context.SaveChangesAsync();
